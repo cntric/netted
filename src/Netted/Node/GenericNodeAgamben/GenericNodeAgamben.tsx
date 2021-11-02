@@ -10,6 +10,10 @@ export type GenericNodeAgambenProps = {
     onDrag ? : (event : MouseEvent | TouchEvent | PointerEvent, info : PanInfo)=>void
 }
 
+const defaultOnDragEnd = (event : MouseEvent | TouchEvent | PointerEvent, info : PanInfo)=>{
+    
+}
+
 export const GenericNodeAgamben : FC<GenericNodeAgambenProps>  = () =>{
 
     return (
