@@ -4,7 +4,10 @@ const jsx_runtime_1 = require("react/jsx-runtime");
 require("./App.css");
 const react_vis_1 = require("./react-vis");
 function App() {
-    return ((0, jsx_runtime_1.jsx)("div", Object.assign({ className: "App" }, { children: (0, jsx_runtime_1.jsx)(react_vis_1.NetworkDiagram, { nodes: {
+    return ((0, jsx_runtime_1.jsx)("div", Object.assign({ className: "App" }, { children: (0, jsx_runtime_1.jsx)(react_vis_1.NetworkDiagram, { style: {
+                height: "100vh",
+                width: "100vw"
+            }, nodes: {
                 "liam": {
                     label: "Liam",
                     x: 0,

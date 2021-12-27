@@ -5,7 +5,10 @@ import {NetworkDiagram} from "./react-vis"
 function App() {
   return (
     <div className="App">
-      <NetworkDiagram nodes={{
+      <NetworkDiagram style={{
+        height : "100vh",
+        width : "100vw"
+      }} nodes={{
         "liam" : {
           label : "Liam",
           x : 0,

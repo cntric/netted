@@ -36,6 +36,7 @@ const convertNodesToDataSet = (nodes : {[key : string] : NodeDetailsI}) : DataSe
 }
 
 export interface NetworkDiagramProps{
+    style ? : React.CSSProperties,
     nodes ? : {[key : string] : NodeDetailsI}
     edges ? : Edge[],
     BoltOns ? : NetworkDiagramBoltOn[]
@@ -51,6 +52,7 @@ export const Networks : {[key : string] : Network} = {};
  * @returns 
  */
 export const NetworkDiagram : FC<NetworkDiagramProps>  = ({
+    style,
     nodes,
     edges,
     BoltOns = [DefaultNetworkDiagramToolbar, NetworkDiagramEditor],
@@ -108,15 +110,14 @@ export const NetworkDiagram : FC<NetworkDiagramProps>  = ({
     return (
         <div style={{
             position : "relative",
-            height : "100vh",
-            width : "100vw"
+            ...style
         }}>
+            {useMemo(()=><div style={{
+                height : "100%",
+                width : "100%"
+            }} ref={domNode}/>, [domNode])}
             {BoltOns.map((BoltOn)=><BoltOn
             network={Networks[id]}/>)}
-            {useMemo(()=><div style={{
-                height : "100vh",
-                width : "100vw"
-            }} ref={domNode}/>, [domNode])}
         </div>
     );
 

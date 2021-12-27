@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { Edge, Network, Options } from "vis-network/standalone/esm/vis-network";
 import { NetworkDiagramBoltOn } from "./BoltOn";
 export declare type NodeDetailsI = Options["nodes"] & {
@@ -7,6 +7,7 @@ export declare type NodeDetailsI = Options["nodes"] & {
     label: string;
 };
 export interface NetworkDiagramProps {
+    style?: React.CSSProperties;
     nodes?: {
         [key: string]: NodeDetailsI;
     };

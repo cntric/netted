@@ -23,7 +23,7 @@ export const Networks = {};
  * @param param0
  * @returns
  */
-export const NetworkDiagram = ({ nodes, edges, BoltOns = [DefaultNetworkDiagramToolbar, NetworkDiagramEditor], options, extractNetwork }) => {
+export const NetworkDiagram = ({ style, nodes, edges, BoltOns = [DefaultNetworkDiagramToolbar, NetworkDiagramEditor], options, extractNetwork }) => {
     // I use a unique 
     const [id, setId] = useState(generate()); // generate from shortid
     // A reference to the div rendered by this component
@@ -65,10 +65,9 @@ export const NetworkDiagram = ({ nodes, edges, BoltOns = [DefaultNetworkDiagramT
     }, []);
     return (_jsxs("div", Object.assign({ style: {
             position: "relative",
-            height: "100vh",
-            width: "100vw"
-        } }, { children: [BoltOns.map((BoltOn) => _jsx(BoltOn, { network: Networks[id] }, void 0)), useMemo(() => _jsx("div", { style: {
-                    height: "100vh",
-                    width: "100vw"
-                }, ref: domNode }, void 0), [domNode])] }), void 0));
+            ...style
+        } }, { children: [useMemo(() => _jsx("div", { style: {
+                    height: "100%",
+                    width: "100%"
+                }, ref: domNode }, void 0), [domNode]), BoltOns.map((BoltOn) => _jsx(BoltOn, { network: Networks[id] }, void 0))] }), void 0));
 };

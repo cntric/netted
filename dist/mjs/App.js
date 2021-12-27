@@ -2,7 +2,10 @@ import { jsx as _jsx } from "react/jsx-runtime";
 import './App.css';
 import { NetworkDiagram } from "./react-vis";
 function App() {
-    return (_jsx("div", Object.assign({ className: "App" }, { children: _jsx(NetworkDiagram, { nodes: {
+    return (_jsx("div", Object.assign({ className: "App" }, { children: _jsx(NetworkDiagram, { style: {
+                height: "100vh",
+                width: "100vw"
+            }, nodes: {
                 "liam": {
                     label: "Liam",
                     x: 0,

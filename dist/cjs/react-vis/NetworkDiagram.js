@@ -23,7 +23,7 @@ exports.Networks = {};
  * @param param0
  * @returns
  */
-const NetworkDiagram = ({ nodes, edges, BoltOns = [NetworkDiagramToolbar_1.DefaultNetworkDiagramToolbar, NetworkDiagramEditor_1.NetworkDiagramEditor], options, extractNetwork }) => {
+const NetworkDiagram = ({ style, nodes, edges, BoltOns = [NetworkDiagramToolbar_1.DefaultNetworkDiagramToolbar, NetworkDiagramEditor_1.NetworkDiagramEditor], options, extractNetwork }) => {
     // I use a unique 
     const [id, setId] = (0, react_1.useState)((0, shortid_1.generate)()); // generate from shortid
     // A reference to the div rendered by this component
@@ -65,13 +65,9 @@ const NetworkDiagram = ({ nodes, edges, BoltOns = [NetworkDiagramToolbar_1.Defau
             }
         };
     }, []);
-    return ((0, jsx_runtime_1.jsxs)("div", Object.assign({ style: {
-            position: "relative",
-            height: "100vh",
-            width: "100vw"
-        } }, { children: [BoltOns.map((BoltOn) => (0, jsx_runtime_1.jsx)(BoltOn, { network: exports.Networks[id] }, void 0)), (0, react_1.useMemo)(() => (0, jsx_runtime_1.jsx)("div", { style: {
-                    height: "100vh",
-                    width: "100vw"
-                }, ref: domNode }, void 0), [domNode])] }), void 0));
+    return ((0, jsx_runtime_1.jsxs)("div", Object.assign({ style: Object.assign({ position: "relative" }, style) }, { children: [(0, react_1.useMemo)(() => (0, jsx_runtime_1.jsx)("div", { style: {
+                    height: "100%",
+                    width: "100%"
+                }, ref: domNode }, void 0), [domNode]), BoltOns.map((BoltOn) => (0, jsx_runtime_1.jsx)(BoltOn, { network: exports.Networks[id] }, void 0))] }), void 0));
 };
 exports.NetworkDiagram = NetworkDiagram;
