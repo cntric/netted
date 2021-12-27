@@ -1,14 +1,29 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { CanvasAntonio, startDrawing, draw, finishDrawing } from './Netted';
-import { NodesAndris } from './Netted/Nodes/NodesAndris/NodesAndris';
-import {NodeWrapperAnna} from "./Netted/NodeWrapper/NodeWrapperAnna";
-import {NetworkDiagramAlonso} from "./reaflow";
+import {NetworkDiagram} from "./react-vis"
 function App() {
   return (
     <div className="App">
-      <NetworkDiagramAlonso/>
+      <NetworkDiagram nodes={{
+        "liam" : {
+          label : "Liam",
+          x : 0,
+          y : 0
+        },
+        "kayla" : {
+          label : "kayla",
+          x : 0,
+          y : 0
+        },
+        "rory" : {
+          label : "rory",
+          x : 10,
+          y : 10
+        }
+     }} edges={[
+       {from : "liam", to : "kayla"}
+     ]}/>
     </div>
   );
 }
