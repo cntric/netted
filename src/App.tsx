@@ -1,6 +1,5 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
 import {NetworkDiagram} from "./react-vis"
 function App() {
   return (

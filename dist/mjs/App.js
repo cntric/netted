@@ -1,5 +1,4 @@
 import { jsx as _jsx } from "react/jsx-runtime";
-import './App.css';
 import { NetworkDiagram } from "./react-vis";
 function App() {
     return (_jsx("div", Object.assign({ className: "App" }, { children: _jsx(NetworkDiagram, { style: {
