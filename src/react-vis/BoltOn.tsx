@@ -1,6 +1,6 @@
 import React, {FC, ReactElement, useEffect, useState} from 'react';
-import { Network} from "vis-network/peer/esm/vis-network";
-import { DataSet } from "vis-data/peer/esm/vis-data";
+import { Network} from "vis-network";
+import { DataSet } from "vis-data";
 
 export type NetworkDiagramBoltOnProps = {
     network ? : Network

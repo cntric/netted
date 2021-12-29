@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, FC, useReducer, useState, useMemo } from "react";
-import { Network,   Node,
+import { 
+    Network,   
+    Node,
     Edge,
     Options,
     Data,
     DataInterfaceEdges,
-    NetworkEvents } from "vis-network/peer/esm/vis-network";
-import { DataSet } from "vis-data/peer/esm/vis-data"
+    NetworkEvents 
+} from "vis-network";
+import { DataSet } from "vis-data"
 import { NetworkDiagramBoltOn } from "./BoltOn";
 import { DefaultNetworkDiagramToolbar } from "./NetworkDiagramToolbar";
 import { NetworkDiagramEditor } from "./NetworkDiagramEditor";

@@ -1,7 +1,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useEffect, useRef, useReducer, useState, useMemo } from "react";
-import { Network } from "vis-network/peer/esm/vis-network";
-import { DataSet } from "vis-data/peer/esm/vis-data";
+import { Network } from "vis-network";
+import { DataSet } from "vis-data";
 import { DefaultNetworkDiagramToolbar } from "./NetworkDiagramToolbar";
 import { NetworkDiagramEditor } from "./NetworkDiagramEditor";
 import { generate } from "shortid";
