@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Network, Edge, Options } from "vis-network";
+import { Network, Edge, Options } from "vis-network/standalone";
 import { NetworkDiagramBoltOn } from "./BoltOn";
 export declare type NodeDetailsI = Options["nodes"] & {
     x: number;

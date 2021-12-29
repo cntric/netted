@@ -7,8 +7,8 @@ import {
     Data,
     DataInterfaceEdges,
     NetworkEvents 
-} from "vis-network";
-import { DataSet } from "vis-data"
+} from "vis-network/standalone";
+import { DataSet } from "vis-data/standalone"
 import { NetworkDiagramBoltOn } from "./BoltOn";
 import { DefaultNetworkDiagramToolbar } from "./NetworkDiagramToolbar";
 import { NetworkDiagramEditor } from "./NetworkDiagramEditor";
