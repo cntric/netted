@@ -1,8 +1,5 @@
 import React, {FC, ReactElement, useEffect, useState} from 'react';
 import { Diagram2Fill, PencilFill } from 'react-bootstrap-icons';
-import {
-    Network
-} from "vis-network/standalone/esm/vis-network";
 import {Button} from "cntric-component-library";
 import { useReducer } from 'react';
 import { NetworkDiagramBoltOn } from './BoltOn';

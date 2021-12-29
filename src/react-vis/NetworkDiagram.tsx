@@ -8,7 +8,7 @@ import {
     Data,
     DataInterfaceEdges,
     NetworkEvents
-  } from "vis-network/standalone/esm/vis-network";
+  } from "vis-network";
 import { NetworkDiagramBoltOn } from "./BoltOn";
 import { DefaultNetworkDiagramToolbar } from "./NetworkDiagramToolbar";
 import { NetworkDiagramEditor } from "./NetworkDiagramEditor";

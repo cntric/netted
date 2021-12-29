@@ -2,7 +2,6 @@ import React, {FC, ReactElement} from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { generate } from 'shortid';
-import { networkOptions } from 'vis-network/declarations/entry-esnext';
 import { NetworkDiagramBoltOn } from './BoltOn';
 
 export type DiagramMode = "node" | "none" | "edge";

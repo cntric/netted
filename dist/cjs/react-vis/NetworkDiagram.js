@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.NetworkDiagram = exports.Networks = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = require("react");
-const vis_network_1 = require("vis-network/standalone/esm/vis-network");
+const vis_network_1 = require("vis-network");
 const NetworkDiagramToolbar_1 = require("./NetworkDiagramToolbar");
 const NetworkDiagramEditor_1 = require("./NetworkDiagramEditor");
 const shortid_1 = require("shortid");

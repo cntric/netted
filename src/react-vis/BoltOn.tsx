@@ -1,7 +1,7 @@
 import React, {FC, ReactElement, useEffect, useState} from 'react';
 import {
     Network, Options
-} from "vis-network/standalone/esm/vis-network";
+} from "vis-network";
 
 export type NetworkDiagramBoltOnProps = {
     network ? : Network
