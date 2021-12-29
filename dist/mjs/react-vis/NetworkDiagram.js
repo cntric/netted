@@ -1,6 +1,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useEffect, useRef, useReducer, useState, useMemo } from "react";
-import { DataSet, Network } from "vis-network";
+import { Network } from "vis-network/peer/esm/vis-network";
+import { DataSet } from "vis-data/peer/esm/vis-data";
 import { DefaultNetworkDiagramToolbar } from "./NetworkDiagramToolbar";
 import { NetworkDiagramEditor } from "./NetworkDiagramEditor";
 import { generate } from "shortid";
@@ -32,7 +33,7 @@ export const NetworkDiagram = ({ style, nodes, edges, BoltOns = [DefaultNetworkD
     const _nodes = convertNodesToDataSet(nodes || {});
     const data = {
         nodes: _nodes,
-        edges: edges
+        edges: new DataSet(edges || [])
     };
     // Initialize once
     if (domNode.current && !Networks[id])
@@ -69,5 +70,5 @@ export const NetworkDiagram = ({ style, nodes, edges, BoltOns = [DefaultNetworkD
         } }, { children: [useMemo(() => _jsx("div", { style: {
                     height: "100%",
                     width: "100%"
-                }, ref: domNode }, void 0), [domNode]), BoltOns.map((BoltOn) => _jsx(BoltOn, { network: Networks[id] }, void 0))] }), void 0));
+                }, ref: domNode }, void 0), [domNode]), BoltOns.map((BoltOn) => _jsx(BoltOn, { edges: data.edges, nodes: data.nodes, network: Networks[id] }, void 0))] }), void 0));
 };

@@ -1,7 +1,7 @@
 import { jsx as _jsx } from "react/jsx-runtime";
 import { useState } from 'react';
 import { generate } from 'shortid';
-export const NetworkDiagramEditor = ({ network }) => {
+export const NetworkDiagramEditor = ({ network, edges, nodes }) => {
     const [id, setId] = useState(generate());
     const [mode, setMode] = useState("none");
     const [nodeParams, setNodeParams] = useState({});

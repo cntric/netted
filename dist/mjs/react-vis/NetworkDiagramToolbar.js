@@ -30,6 +30,7 @@ export const DefaultNetworkDiagramToolbar = ({ network, style }) => {
         }
         ;
     });
+    console.log(network?.getSelection());
     return (_jsx("div", Object.assign({ style: {
             padding: "5px",
             display: "grid",

@@ -7,7 +7,9 @@ import { NetworkDiagramBoltOn } from './BoltOn';
 export type DiagramMode = "node" | "none" | "edge";
 
 export const NetworkDiagramEditor : NetworkDiagramBoltOn  = ({
-    network
+    network,
+    edges,
+    nodes
 }) =>{
 
     const [id, setId] = useState(generate());

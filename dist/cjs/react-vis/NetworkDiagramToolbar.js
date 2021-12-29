@@ -42,6 +42,7 @@ const DefaultNetworkDiagramToolbar = ({ network, style }) => {
         }
         ;
     });
+    console.log(network === null || network === void 0 ? void 0 : network.getSelection());
     return ((0, jsx_runtime_1.jsx)("div", Object.assign({ style: {
             padding: "5px",
             display: "grid",

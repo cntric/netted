@@ -1,14 +1,11 @@
 import React, { useEffect, useRef, FC, useReducer, useState, useMemo } from "react";
-import {
-    Node,
+import { Network,   Node,
     Edge,
-    DataSet,
-    Network,
     Options,
     Data,
     DataInterfaceEdges,
-    NetworkEvents
-  } from "vis-network";
+    NetworkEvents } from "vis-network/peer/esm/vis-network";
+import { DataSet } from "vis-data/peer/esm/vis-data"
 import { NetworkDiagramBoltOn } from "./BoltOn";
 import { DefaultNetworkDiagramToolbar } from "./NetworkDiagramToolbar";
 import { NetworkDiagramEditor } from "./NetworkDiagramEditor";
@@ -69,9 +66,9 @@ export const NetworkDiagram : FC<NetworkDiagramProps>  = ({
     // I'm only accepting nodes as an object, with keys for ids.
     const _nodes = convertNodesToDataSet(nodes||{});
 
-    const data: Data = {
+    const data = {
         nodes  : _nodes,
-        edges : edges
+        edges : new DataSet(edges||[])
     };
 
     // Initialize once
@@ -117,6 +114,8 @@ export const NetworkDiagram : FC<NetworkDiagramProps>  = ({
                 width : "100%"
             }} ref={domNode}/>, [domNode])}
             {BoltOns.map((BoltOn)=><BoltOn
+            edges={data.edges}
+            nodes={data.nodes}
             network={Networks[id]}/>)}
         </div>
     );

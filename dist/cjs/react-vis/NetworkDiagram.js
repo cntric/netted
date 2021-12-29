@@ -3,7 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.NetworkDiagram = exports.Networks = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = require("react");
-const vis_network_1 = require("vis-network");
+const vis_network_1 = require("vis-network/peer/esm/vis-network");
+const vis_data_1 = require("vis-data/peer/esm/vis-data");
 const NetworkDiagramToolbar_1 = require("./NetworkDiagramToolbar");
 const NetworkDiagramEditor_1 = require("./NetworkDiagramEditor");
 const shortid_1 = require("shortid");
@@ -13,7 +14,7 @@ const shortid_1 = require("shortid");
  * @returns
  */
 const convertNodesToDataSet = (nodes) => {
-    return new vis_network_1.DataSet(Object.keys(nodes).map((key) => {
+    return new vis_data_1.DataSet(Object.keys(nodes).map((key) => {
         return Object.assign({ id: key }, nodes[key]);
     }));
 };
@@ -32,7 +33,7 @@ const NetworkDiagram = ({ style, nodes, edges, BoltOns = [NetworkDiagramToolbar_
     const _nodes = convertNodesToDataSet(nodes || {});
     const data = {
         nodes: _nodes,
-        edges: edges
+        edges: new vis_data_1.DataSet(edges || [])
     };
     // Initialize once
     if (domNode.current && !exports.Networks[id])
@@ -68,6 +69,6 @@ const NetworkDiagram = ({ style, nodes, edges, BoltOns = [NetworkDiagramToolbar_
     return ((0, jsx_runtime_1.jsxs)("div", Object.assign({ style: Object.assign({ position: "relative" }, style) }, { children: [(0, react_1.useMemo)(() => (0, jsx_runtime_1.jsx)("div", { style: {
                     height: "100%",
                     width: "100%"
-                }, ref: domNode }, void 0), [domNode]), BoltOns.map((BoltOn) => (0, jsx_runtime_1.jsx)(BoltOn, { network: exports.Networks[id] }, void 0))] }), void 0));
+                }, ref: domNode }, void 0), [domNode]), BoltOns.map((BoltOn) => (0, jsx_runtime_1.jsx)(BoltOn, { edges: data.edges, nodes: data.nodes, network: exports.Networks[id] }, void 0))] }), void 0));
 };
 exports.NetworkDiagram = NetworkDiagram;

@@ -4,7 +4,7 @@ exports.NetworkDiagramEditor = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = require("react");
 const shortid_1 = require("shortid");
-const NetworkDiagramEditor = ({ network }) => {
+const NetworkDiagramEditor = ({ network, edges, nodes }) => {
     const [id, setId] = (0, react_1.useState)((0, shortid_1.generate)());
     const [mode, setMode] = (0, react_1.useState)("none");
     const [nodeParams, setNodeParams] = (0, react_1.useState)({});
