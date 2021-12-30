@@ -25,8 +25,7 @@ exports.Networks = {};
  * @returns
  */
 const NetworkDiagram = ({ style, nodes, edges, BoltOns = [NetworkDiagramToolbar_1.DefaultNetworkDiagramToolbar, NetworkDiagramEditor_1.NetworkDiagramEditor], options, extractNetwork }) => {
-    // I use a unique 
-    const [id, setId] = (0, react_1.useState)((0, shortid_1.generate)()); // generate from shortid
+    const network = (0, react_1.useRef)(undefined);
     // A reference to the div rendered by this component
     const domNode = (0, react_1.useRef)(null);
     // I'm only accepting nodes as an object, with keys for ids.
@@ -35,9 +34,10 @@ const NetworkDiagram = ({ style, nodes, edges, BoltOns = [NetworkDiagramToolbar_
         nodes: _nodes,
         edges: new standalone_2.DataSet(edges || [])
     };
-    // Initialize once
-    if (domNode.current && !exports.Networks[id])
-        exports.Networks[id] = new standalone_1.Network(domNode.current, data, {});
+    (0, react_1.useEffect)(() => {
+        if (domNode.current && !network.current)
+            network.current = new standalone_1.Network(domNode.current, data, {});
+    }, [domNode.current]);
     // We need the component to be rerendered once
     // after the domNode has been rendered and the network initialized.
     const [tick, forceUpdate] = (0, react_1.useReducer)(x => x + 1, 0);
@@ -47,28 +47,28 @@ const NetworkDiagram = ({ style, nodes, edges, BoltOns = [NetworkDiagramToolbar_
     // handle new data on options by mutably setting the data and options
     (0, react_1.useEffect)(() => {
         var _a;
-        (_a = exports.Networks[id]) === null || _a === void 0 ? void 0 : _a.setData(data);
+        (_a = network.current) === null || _a === void 0 ? void 0 : _a.setData(data);
     }, [data, tick]);
     (0, react_1.useEffect)(() => {
         var _a;
-        (_a = exports.Networks[id]) === null || _a === void 0 ? void 0 : _a.setOptions(options || {});
+        (_a = network.current) === null || _a === void 0 ? void 0 : _a.setOptions(options || {});
     }, [options, tick]);
     // allow network to be extracted
     (0, react_1.useEffect)(() => {
-        extractNetwork && extractNetwork(exports.Networks[id]);
+        extractNetwork && extractNetwork(network.current);
     }, [tick]);
     // And, the teardown
     (0, react_1.useEffect)(() => {
         return () => {
-            if (exports.Networks[id]) {
-                exports.Networks[id].destroy();
-                delete exports.Networks[id];
+            if (network.current) {
+                network.current.destroy();
+                delete network.current;
             }
         };
     }, []);
     return ((0, jsx_runtime_1.jsxs)("div", Object.assign({ style: Object.assign({ position: "relative" }, style) }, { children: [(0, react_1.useMemo)(() => (0, jsx_runtime_1.jsx)("div", { style: {
                     height: "100%",
                     width: "100%"
-                }, ref: domNode }, void 0), [domNode]), BoltOns.map((BoltOn) => (0, jsx_runtime_1.jsx)(BoltOn, { edges: data.edges, nodes: data.nodes, network: exports.Networks[id] }, void 0))] }), void 0));
+                }, ref: domNode }, void 0), [domNode]), BoltOns.map((BoltOn) => (0, jsx_runtime_1.jsx)(BoltOn, { edges: data.edges, nodes: data.nodes, network: network.current }, (0, shortid_1.generate)()))] }), void 0));
 };
 exports.NetworkDiagram = NetworkDiagram;

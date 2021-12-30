@@ -60,8 +60,7 @@ export const NetworkDiagram : FC<NetworkDiagramProps>  = ({
     extractNetwork
 }) =>{
 
-    // I use a unique 
-    const [id, setId] = useState(generate()); // generate from shortid
+    const network = useRef<Network|undefined>(undefined);
 
     // A reference to the div rendered by this component
     const domNode = useRef<HTMLDivElement>(null);
@@ -74,8 +73,10 @@ export const NetworkDiagram : FC<NetworkDiagramProps>  = ({
         edges : new DataSet(edges||[])
     };
 
-    // Initialize once
-    if(domNode.current && !Networks[id]) Networks[id] = new Network(domNode.current, data, {});
+    useEffect(()=>{
+        if(domNode.current && !network.current) network.current = new Network(domNode.current, data, {});
+    }, [domNode.current])
+
 
     // We need the component to be rerendered once
     // after the domNode has been rendered and the network initialized.
@@ -86,23 +87,23 @@ export const NetworkDiagram : FC<NetworkDiagramProps>  = ({
     
     // handle new data on options by mutably setting the data and options
     useEffect(()=>{
-        Networks[id]?.setData(data);
+        network.current?.setData(data);
     }, [data, tick])
     useEffect(()=>{
-        Networks[id]?.setOptions(options||{});
+        network.current?.setOptions(options||{});
     }, [options, tick])
 
     // allow network to be extracted
     useEffect(()=>{
-        extractNetwork && extractNetwork(Networks[id]);
+        extractNetwork && extractNetwork(network.current);
     }, [tick])
 
     // And, the teardown
     useEffect(()=>{
         return ()=>{
-            if(Networks[id]){
-                Networks[id].destroy();
-                delete Networks[id];
+            if(network.current){
+                network.current.destroy();
+                delete network.current;
             }
         }
     }, [])
@@ -117,9 +118,10 @@ export const NetworkDiagram : FC<NetworkDiagramProps>  = ({
                 width : "100%"
             }} ref={domNode}/>, [domNode])}
             {BoltOns.map((BoltOn)=><BoltOn
+            key={generate()}
             edges={data.edges}
             nodes={data.nodes}
-            network={Networks[id]}/>)}
+            network={network.current}/>)}
         </div>
     );
 

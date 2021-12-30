@@ -1,5 +1,5 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { useEffect, useRef, useReducer, useState, useMemo } from "react";
+import { useEffect, useRef, useReducer, useMemo } from "react";
 import { Network } from "vis-network/standalone";
 import { DataSet } from "vis-data/standalone";
 import { DefaultNetworkDiagramToolbar } from "./NetworkDiagramToolbar";
@@ -25,8 +25,7 @@ export const Networks = {};
  * @returns
  */
 export const NetworkDiagram = ({ style, nodes, edges, BoltOns = [DefaultNetworkDiagramToolbar, NetworkDiagramEditor], options, extractNetwork }) => {
-    // I use a unique 
-    const [id, setId] = useState(generate()); // generate from shortid
+    const network = useRef(undefined);
     // A reference to the div rendered by this component
     const domNode = useRef(null);
     // I'm only accepting nodes as an object, with keys for ids.
@@ -35,9 +34,10 @@ export const NetworkDiagram = ({ style, nodes, edges, BoltOns = [DefaultNetworkD
         nodes: _nodes,
         edges: new DataSet(edges || [])
     };
-    // Initialize once
-    if (domNode.current && !Networks[id])
-        Networks[id] = new Network(domNode.current, data, {});
+    useEffect(() => {
+        if (domNode.current && !network.current)
+            network.current = new Network(domNode.current, data, {});
+    }, [domNode.current]);
     // We need the component to be rerendered once
     // after the domNode has been rendered and the network initialized.
     const [tick, forceUpdate] = useReducer(x => x + 1, 0);
@@ -46,21 +46,21 @@ export const NetworkDiagram = ({ style, nodes, edges, BoltOns = [DefaultNetworkD
     }, []);
     // handle new data on options by mutably setting the data and options
     useEffect(() => {
-        Networks[id]?.setData(data);
+        network.current?.setData(data);
     }, [data, tick]);
     useEffect(() => {
-        Networks[id]?.setOptions(options || {});
+        network.current?.setOptions(options || {});
     }, [options, tick]);
     // allow network to be extracted
     useEffect(() => {
-        extractNetwork && extractNetwork(Networks[id]);
+        extractNetwork && extractNetwork(network.current);
     }, [tick]);
     // And, the teardown
     useEffect(() => {
         return () => {
-            if (Networks[id]) {
-                Networks[id].destroy();
-                delete Networks[id];
+            if (network.current) {
+                network.current.destroy();
+                delete network.current;
             }
         };
     }, []);
@@ -70,5 +70,5 @@ export const NetworkDiagram = ({ style, nodes, edges, BoltOns = [DefaultNetworkD
         } }, { children: [useMemo(() => _jsx("div", { style: {
                     height: "100%",
                     width: "100%"
-                }, ref: domNode }, void 0), [domNode]), BoltOns.map((BoltOn) => _jsx(BoltOn, { edges: data.edges, nodes: data.nodes, network: Networks[id] }, void 0))] }), void 0));
+                }, ref: domNode }, void 0), [domNode]), BoltOns.map((BoltOn) => _jsx(BoltOn, { edges: data.edges, nodes: data.nodes, network: network.current }, generate()))] }), void 0));
 };
