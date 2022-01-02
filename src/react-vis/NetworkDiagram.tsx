@@ -95,7 +95,7 @@ export const NetworkDiagram : FC<NetworkDiagramProps>  = ({
 
     // allow network to be extracted
     useEffect(()=>{
-        extractNetwork && extractNetwork(network.current);
+        extractNetwork && extractNetwork(network.current, data.nodes, data.edges);
     }, [tick])
 
     // And, the teardown

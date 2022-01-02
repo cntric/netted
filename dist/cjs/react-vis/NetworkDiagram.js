@@ -55,7 +55,7 @@ const NetworkDiagram = ({ style, nodes, edges, BoltOns = [NetworkDiagramToolbar_
     }, [options, tick]);
     // allow network to be extracted
     (0, react_1.useEffect)(() => {
-        extractNetwork && extractNetwork(network.current);
+        extractNetwork && extractNetwork(network.current, data.nodes, data.edges);
     }, [tick]);
     // And, the teardown
     (0, react_1.useEffect)(() => {
