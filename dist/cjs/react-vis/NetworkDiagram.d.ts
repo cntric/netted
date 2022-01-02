@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { Network, Edge, Options } from "vis-network/standalone";
+import { DataSet } from "vis-data/standalone";
 import { NetworkDiagramBoltOn } from "./BoltOn";
 export declare type NodeDetailsI = Options["nodes"] & {
     x: number;
@@ -14,7 +15,7 @@ export interface NetworkDiagramProps {
     edges?: Edge[];
     BoltOns?: NetworkDiagramBoltOn[];
     options?: Options;
-    extractNetwork?: (network?: Network) => any;
+    extractNetwork?: (network?: Network, nodes?: DataSet<any, any>, edges?: DataSet<any, any>) => any;
 }
 export declare const Networks: {
     [key: string]: Network;

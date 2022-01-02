@@ -41,7 +41,7 @@ export interface NetworkDiagramProps{
     edges ? : Edge[],
     BoltOns ? : NetworkDiagramBoltOn[]
     options ? : Options,
-    extractNetwork ? : (network ? : Network)=>any
+    extractNetwork ? : (network ? : Network, nodes ? : DataSet<any, any>, edges ? : DataSet<any, any>)=>any,
 }
 
 export const Networks : {[key : string] : Network} = {};
