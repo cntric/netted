@@ -31,7 +31,7 @@ export const DefaultNetworkDiagramToolbar = ({ network, style }) => {
         ;
     });
     console.log(network?.getSelection());
-    return (_jsx("div", Object.assign({ style: {
+    return (_jsx("div", { style: {
             padding: "5px",
             display: "grid",
             position: "absolute",
@@ -42,9 +42,9 @@ export const DefaultNetworkDiagramToolbar = ({ network, style }) => {
             backdropFilter: "invert(1%)",
             borderRadius: "2px",
             fontSize: "10px"
-        } }, { children: _jsxs("div", Object.assign({ style: {
+        }, children: _jsxs("div", { style: {
                 display: "grid",
                 gridTemplateColumns: "1fr",
                 gridTemplateRows: "2fr 1fr"
-            } }, { children: [_jsx(Button, Object.assign({ action: handleAddEdge, size: "sm", primaryColor: "blue", secondaryColor: "white", invert: editMode === "edge" }, { children: _jsx(Diagram2Fill, { size: "18px" }, void 0) }), void 0), _jsx("div", { children: "Add edge" }, void 0)] }), void 0) }), void 0));
+            }, children: [_jsx(Button, { action: handleAddEdge, size: "sm", primaryColor: "blue", secondaryColor: "white", invert: editMode === "edge", children: _jsx(Diagram2Fill, { size: "18px" }, void 0) }, void 0), _jsx("div", { children: "Add edge" }, void 0)] }, void 0) }, void 0));
 };

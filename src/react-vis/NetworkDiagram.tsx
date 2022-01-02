@@ -95,6 +95,7 @@ export const NetworkDiagram : FC<NetworkDiagramProps>  = ({
 
     // allow network to be extracted
     useEffect(()=>{
+        console.log("Extracting network...", network.current, data.nodes, data.edges);
         extractNetwork && extractNetwork(network.current, data.nodes, data.edges);
     }, [tick])
 

@@ -32,23 +32,23 @@ const CanvasAntonio = ({ style, extentX = 1000, extentY = 1000, initialX, initia
         onMouseUp && onMouseUp(e, ref, frame, isDrawing);
         nextFrame();
     };
-    return (_jsx(TransformWrapper, Object.assign({ onPanningStop: onPanningStop, initialScale: 1, centerOnInit: true, disabled: !panning }, { children: _jsx(TransformComponent, Object.assign({ wrapperStyle: {
+    return (_jsx(TransformWrapper, { onPanningStop: onPanningStop, initialScale: 1, centerOnInit: true, disabled: !panning, children: _jsx(TransformComponent, { wrapperStyle: {
                 height: "200px",
                 width: "200px",
                 ...style
-            } }, { children: _jsxs("div", Object.assign({ style: {
+            }, children: _jsxs("div", { style: {
                     height: extentY,
                     width: extentX,
                     position: "relative"
-                } }, { children: [_jsx("canvas", { onMouseDown: _onMouseDown, onMouseUp: _onMouseUp, onMouseMove: _onMouseMove, height: extentY, width: extentX, style: {
+                }, children: [_jsx("canvas", { onMouseDown: _onMouseDown, onMouseUp: _onMouseUp, onMouseMove: _onMouseMove, height: extentY, width: extentX, style: {
                             background: "pink"
-                        }, ref: ref }, void 0), _jsx("div", Object.assign({ style: {
+                        }, ref: ref }, void 0), _jsx("div", { style: {
                             height: extentX,
                             width: extentY,
                             position: "absolute",
                             left: 0,
                             top: 0
-                        } }, { children: Overlays }), void 0)] }), void 0) }), void 0) }), void 0));
+                        }, children: Overlays }, void 0)] }, void 0) }, void 0) }, void 0));
 };
 CanvasAntonio.Overlays = generateNamedMember("Overlays");
 export { CanvasAntonio };

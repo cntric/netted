@@ -53,6 +53,7 @@ export const NetworkDiagram = ({ style, nodes, edges, BoltOns = [DefaultNetworkD
     }, [options, tick]);
     // allow network to be extracted
     useEffect(() => {
+        console.log("Extracting network...", network.current, data.nodes, data.edges);
         extractNetwork && extractNetwork(network.current, data.nodes, data.edges);
     }, [tick]);
     // And, the teardown
@@ -64,11 +65,11 @@ export const NetworkDiagram = ({ style, nodes, edges, BoltOns = [DefaultNetworkD
             }
         };
     }, []);
-    return (_jsxs("div", Object.assign({ style: {
+    return (_jsxs("div", { style: {
             position: "relative",
             ...style
-        } }, { children: [useMemo(() => _jsx("div", { style: {
+        }, children: [useMemo(() => _jsx("div", { style: {
                     height: "100%",
                     width: "100%"
-                }, ref: domNode }, void 0), [domNode]), BoltOns.map((BoltOn) => _jsx(BoltOn, { edges: data.edges, nodes: data.nodes, network: network.current }, generate()))] }), void 0));
+                }, ref: domNode }, void 0), [domNode]), BoltOns.map((BoltOn) => _jsx(BoltOn, { edges: data.edges, nodes: data.nodes, network: network.current }, generate()))] }, void 0));
 };

@@ -14,9 +14,9 @@ export const NodesAndris = ({ children, style }) => {
     useEffect(() => {
         console.log(containerRef);
     });
-    return (_jsx("div", Object.assign({ ref: containerRef, style: {
+    return (_jsx("div", { ref: containerRef, style: {
             height: "100%",
             width: "100%",
             ...style
-        } }, { children: _children }), void 0));
+        }, children: _children }, void 0));
 };

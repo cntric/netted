@@ -13,11 +13,11 @@ export const NetworkDiagramEditor = ({ network, edges, nodes }) => {
     network?.on("deselectEdge", (params) => {
         setMode("none");
     });
-    return (_jsx("div", Object.assign({ style: {
+    return (_jsx("div", { style: {
             position: "absolute",
             width: "80%",
             height: "200px",
             bottom: "10px",
             left: "10%"
-        } }, { children: mode }), void 0));
+        }, children: mode }, void 0));
 };
