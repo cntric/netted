@@ -25,6 +25,7 @@ exports.Networks = {};
  * @returns
  */
 const NetworkDiagram = ({ style, nodes, edges, BoltOns = [NetworkDiagramToolbar_1.DefaultNetworkDiagramToolbar, NetworkDiagramEditor_1.NetworkDiagramEditor], options, extractNetwork }) => {
+    // reset 
     const network = (0, react_1.useRef)(undefined);
     // A reference to the div rendered by this component
     const domNode = (0, react_1.useRef)(null);

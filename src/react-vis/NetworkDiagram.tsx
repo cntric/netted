@@ -60,6 +60,8 @@ export const NetworkDiagram : FC<NetworkDiagramProps>  = ({
     extractNetwork
 }) =>{
 
+    // reset 
+
     const network = useRef<Network|undefined>(undefined);
 
     // A reference to the div rendered by this component

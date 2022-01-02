@@ -25,6 +25,7 @@ export const Networks = {};
  * @returns
  */
 export const NetworkDiagram = ({ style, nodes, edges, BoltOns = [DefaultNetworkDiagramToolbar, NetworkDiagramEditor], options, extractNetwork }) => {
+    // reset 
     const network = useRef(undefined);
     // A reference to the div rendered by this component
     const domNode = useRef(null);
