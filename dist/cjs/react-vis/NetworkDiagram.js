@@ -24,7 +24,7 @@ exports.Networks = {};
  * @param param0
  * @returns
  */
-const NetworkDiagram = ({ style, nodes, edges, BoltOns = [NetworkDiagramToolbar_1.DefaultNetworkDiagramToolbar, NetworkDiagramEditor_1.NetworkDiagramEditor], options, extractNetwork }) => {
+const NetworkDiagram = ({ style, nodes, edges, BoltOns = [NetworkDiagramToolbar_1.DefaultNetworkDiagramToolbar, NetworkDiagramEditor_1.NetworkDiagramEditor], BoltOnMemo, options, extractNetwork }) => {
     // reset 
     const network = (0, react_1.useRef)(undefined);
     // A reference to the div rendered by this component
@@ -71,6 +71,6 @@ const NetworkDiagram = ({ style, nodes, edges, BoltOns = [NetworkDiagramToolbar_
     return ((0, jsx_runtime_1.jsxs)("div", Object.assign({ style: Object.assign({ position: "relative" }, style) }, { children: [(0, react_1.useMemo)(() => (0, jsx_runtime_1.jsx)("div", { style: {
                     height: "100%",
                     width: "100%"
-                }, ref: domNode }, void 0), [domNode]), BoltOns.map((BoltOn) => (0, jsx_runtime_1.jsx)(BoltOn, { edges: data.edges, nodes: data.nodes, network: network.current }, (0, shortid_1.generate)()))] }), void 0));
+                }, ref: domNode }, void 0), [domNode]), (0, react_1.useMemo)(() => BoltOns.map((BoltOn) => (0, jsx_runtime_1.jsx)(BoltOn, { edges: data.edges, nodes: data.nodes, network: network.current }, (0, shortid_1.generate)())), [...BoltOnMemo || []])] }), void 0));
 };
 exports.NetworkDiagram = NetworkDiagram;

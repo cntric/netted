@@ -14,6 +14,7 @@ export interface NetworkDiagramProps {
     };
     edges?: Edge[];
     BoltOns?: NetworkDiagramBoltOn[];
+    BoltOnMemo?: any[];
     options?: Options;
     extractNetwork?: (network?: Network, nodes?: DataSet<any, any>, edges?: DataSet<any, any>) => any;
 }

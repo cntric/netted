@@ -24,7 +24,7 @@ export const Networks = {};
  * @param param0
  * @returns
  */
-export const NetworkDiagram = ({ style, nodes, edges, BoltOns = [DefaultNetworkDiagramToolbar, NetworkDiagramEditor], options, extractNetwork }) => {
+export const NetworkDiagram = ({ style, nodes, edges, BoltOns = [DefaultNetworkDiagramToolbar, NetworkDiagramEditor], BoltOnMemo, options, extractNetwork }) => {
     // reset 
     const network = useRef(undefined);
     // A reference to the div rendered by this component
@@ -72,5 +72,5 @@ export const NetworkDiagram = ({ style, nodes, edges, BoltOns = [DefaultNetworkD
         }, children: [useMemo(() => _jsx("div", { style: {
                     height: "100%",
                     width: "100%"
-                }, ref: domNode }, void 0), [domNode]), BoltOns.map((BoltOn) => _jsx(BoltOn, { edges: data.edges, nodes: data.nodes, network: network.current }, generate()))] }, void 0));
+                }, ref: domNode }, void 0), [domNode]), useMemo(() => BoltOns.map((BoltOn) => _jsx(BoltOn, { edges: data.edges, nodes: data.nodes, network: network.current }, generate())), [...BoltOnMemo || []])] }, void 0));
 };

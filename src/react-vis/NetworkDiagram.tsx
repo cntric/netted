@@ -39,7 +39,8 @@ export interface NetworkDiagramProps{
     style ? : React.CSSProperties,
     nodes ? : {[key : string] : NodeDetailsI}
     edges ? : Edge[],
-    BoltOns ? : NetworkDiagramBoltOn[]
+    BoltOns ? : NetworkDiagramBoltOn[],
+    BoltOnMemo ? : any[],
     options ? : Options,
     extractNetwork ? : (network ? : Network, nodes ? : DataSet<any, any>, edges ? : DataSet<any, any>)=>any,
 }
@@ -56,6 +57,7 @@ export const NetworkDiagram : FC<NetworkDiagramProps>  = ({
     nodes,
     edges,
     BoltOns = [DefaultNetworkDiagramToolbar, NetworkDiagramEditor],
+    BoltOnMemo,
     options,
     extractNetwork
 }) =>{
@@ -120,11 +122,11 @@ export const NetworkDiagram : FC<NetworkDiagramProps>  = ({
                 height : "100%",
                 width : "100%"
             }} ref={domNode}/>, [domNode])}
-            {BoltOns.map((BoltOn)=><BoltOn
+            {useMemo(()=>BoltOns.map((BoltOn)=><BoltOn
             key={generate()}
             edges={data.edges}
             nodes={data.nodes}
-            network={network.current}/>)}
+            network={network.current}/>), [...BoltOnMemo||[]])}
         </div>
     );
 
