@@ -91,10 +91,10 @@ export const NetworkDiagram : FC<NetworkDiagramProps>  = ({
     
     // handle new data on options by mutably setting the data and options
     useEffect(()=>{
-        network.current?.setData(data);
+        network.current && network.current.setData(data);
     }, [data, tick])
     useEffect(()=>{
-        network.current?.setOptions(options||{});
+        network.current && network.current.setOptions(options||{});
     }, [options, tick])
 
     // allow network to be extracted

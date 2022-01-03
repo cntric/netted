@@ -37,8 +37,6 @@ export const DefaultNetworkDiagramToolbar : NetworkDiagramBoltOn = ({
         };   
     })
 
-    console.log(network?.getSelection());
-
     return (
 
         <div style={{

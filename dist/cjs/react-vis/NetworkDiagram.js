@@ -47,12 +47,10 @@ const NetworkDiagram = ({ style, nodes, edges, BoltOns = [NetworkDiagramToolbar_
     }, []);
     // handle new data on options by mutably setting the data and options
     (0, react_1.useEffect)(() => {
-        var _a;
-        (_a = network.current) === null || _a === void 0 ? void 0 : _a.setData(data);
+        network.current && network.current.setData(data);
     }, [data, tick]);
     (0, react_1.useEffect)(() => {
-        var _a;
-        (_a = network.current) === null || _a === void 0 ? void 0 : _a.setOptions(options || {});
+        network.current && network.current.setOptions(options || {});
     }, [options, tick]);
     // allow network to be extracted
     (0, react_1.useEffect)(() => {

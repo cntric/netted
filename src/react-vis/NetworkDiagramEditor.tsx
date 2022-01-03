@@ -18,11 +18,11 @@ export const NetworkDiagramEditor : NetworkDiagramBoltOn  = ({
     const [nodeParams, setNodeParams] = useState<any>({});
     const [edgeParams, setEdgeParams] = useState<any>({});
 
-    network?.on('selectEdge', (params)=>{
+    network && network.on('selectEdge', (params)=>{
         setMode("edge");
         setEdgeParams(params);
     });
-    network?.on("deselectEdge", (params)=>{
+    network && network.on("deselectEdge", (params)=>{
         setMode("none");
     })
 

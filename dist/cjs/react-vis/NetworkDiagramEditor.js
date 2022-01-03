@@ -9,11 +9,11 @@ const NetworkDiagramEditor = ({ network, edges, nodes }) => {
     const [mode, setMode] = (0, react_1.useState)("none");
     const [nodeParams, setNodeParams] = (0, react_1.useState)({});
     const [edgeParams, setEdgeParams] = (0, react_1.useState)({});
-    network === null || network === void 0 ? void 0 : network.on('selectEdge', (params) => {
+    network && network.on('selectEdge', (params) => {
         setMode("edge");
         setEdgeParams(params);
     });
-    network === null || network === void 0 ? void 0 : network.on("deselectEdge", (params) => {
+    network && network.on("deselectEdge", (params) => {
         setMode("none");
     });
     return ((0, jsx_runtime_1.jsx)("div", Object.assign({ style: {

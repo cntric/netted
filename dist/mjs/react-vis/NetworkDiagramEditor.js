@@ -6,11 +6,11 @@ export const NetworkDiagramEditor = ({ network, edges, nodes }) => {
     const [mode, setMode] = useState("none");
     const [nodeParams, setNodeParams] = useState({});
     const [edgeParams, setEdgeParams] = useState({});
-    network?.on('selectEdge', (params) => {
+    network && network.on('selectEdge', (params) => {
         setMode("edge");
         setEdgeParams(params);
     });
-    network?.on("deselectEdge", (params) => {
+    network && network.on("deselectEdge", (params) => {
         setMode("none");
     });
     return (_jsx("div", { style: {
