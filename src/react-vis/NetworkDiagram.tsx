@@ -107,8 +107,7 @@ export const NetworkDiagram : FC<NetworkDiagramProps>  = ({
     useEffect(()=>{
         return ()=>{
             if(network.current){
-                network.current.destroy();
-                delete network.current;
+                network.current.destroy && network.current.destroy();
             }
         }
     }, [])

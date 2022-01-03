@@ -61,8 +61,7 @@ const NetworkDiagram = ({ style, nodes, edges, BoltOns = [NetworkDiagramToolbar_
     (0, react_1.useEffect)(() => {
         return () => {
             if (network.current) {
-                network.current.destroy();
-                delete network.current;
+                network.current.destroy && network.current.destroy();
             }
         };
     }, []);

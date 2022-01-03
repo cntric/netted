@@ -61,8 +61,7 @@ export const NetworkDiagram = ({ style, nodes, edges, BoltOns = [DefaultNetworkD
     useEffect(() => {
         return () => {
             if (network.current) {
-                network.current.destroy();
-                delete network.current;
+                network.current.destroy && network.current.destroy();
             }
         };
     }, []);
